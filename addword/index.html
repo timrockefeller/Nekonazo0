@@ -13,12 +13,12 @@
             
         }
         .tiptype{
-            padding:10px 20px;
+            padding:7px 20px;
             height:30px;
             font-size:20px;
         }
         .tiptype:hover{
-            background:#DDD;
+            background:pink;
         }
         .tiptype:active{
             background:#AAA;
@@ -34,6 +34,18 @@
         #ctr{
             width:80%;
         }
+      #TRY{
+      	height:30px;
+            width:60%;
+            font-size:20px;
+      }
+      a{
+      color:pink;
+      }
+      a:active{
+      color:#777}
+      a:visited:{
+      color:pink}
         @media screen and (max-width: 600px) {
             #ctr{
                 width:100%;
@@ -43,11 +55,14 @@
 </head>
 <body>
     <div id="ctr"style="margin:0 auto">
-        
-        <input id="nazo" type="text" placeholder="输入谜题,回车来输入">
-        <input id="yes" type="button" onClick="yeees()" value="手动发射">
+        专为Nekonazo 0准备的<span style="color:pink">填词工具</span><br />
+      <span style="color:#AAA;font-size:10px">注意：目前的词库版本为<span style="color:pink">Beta0.1</span>，后期会根据改动设置不同的词库（如“东方专版”包含的提示种类细化至“幻想乡地址”、“博丽灵梦符卡”等，“阴阳寮”词库提示细化至“某SSR”、“御魂”等），详见<a href="#">Nekonazo分类细则（修订中）</a></span><br />
+        <input id="nazo" type="text" placeholder="来～不停的～灌输我吧">
+        <input id="yes" type="button" onClick="yeees()" value="手动回车"><br/>
+      <span>使用全角逗号进行多项同时输入，如“哈哈哈<span style="color:pink">，</span>超威蓝猫” 将解析成两个词语</span>
         <div id="tipses">
             选择一个提示种类,已选择:<span id="tips">人物</span>
+          <div>
             <div class="tiptype" onclick="changeT('人物')">人物</div>
             <div class="tiptype" onclick="changeT('身体部位')">身体部位</div>
             <div class="tiptype" onclick="changeT('游戏')">游戏</div>
@@ -55,16 +70,29 @@
             <div class="tiptype" onclick="changeT('诗')">诗</div>
             <div class="tiptype" onclick="changeT('梗')">梗</div>
             <div class="tiptype" onclick="changeT('萌化')">萌化</div>
+          <div class="tiptype" onclick="changeT('世界名画')">世界名画</div>
+          <div class="tiptype" onclick="changeT('历史')">历史</div>
+          <div class="tiptype" onclick="changeT('古风')">古风</div>
+          <div class="tiptype" onclick="changeT('厂牌')">厂牌</div>
+          <div class="tiptype" onclick="changeT('虚构角色')">虚构角色</div>
+          <div class="tiptype" onclick="changeT('歌曲')">歌曲</div>
+          <div class="tiptype" onclick="changeT('食物')">食物</div>
+            <div class="tiptype" onclick="changeT('声优')">声优</div>
+            <div class="tiptype" onclick="changeT('妖怪')">妖怪</div>
+           </div>
             <input id="TRY" type="text" placeholder="自定义提示">
             <input id="ohyes" type="button" onclick="settip()" value="确认">
         </div>
-        完成后把下面这一坨东西复制给我hhh   （刷新以清空
+        全部完成后把下面这一坨东西复制给我hhh   （刷新以清空
         <div id="result">
             
         </div>
-        或者一戳邮件
+        或者一戳邮件 tim720719@yeah.net
         
         <a id="Maction"href="">shoooot</a>
+      
+      <br/>
+      若想进行重复内容查询, 请戳<a href="check.html">这里</a>
     </div>
     
     
@@ -111,24 +139,26 @@
             e = e || window.event;
             if ( document.getElementById("nazo").value != "" && e.keyCode == 13 ) {
             ////////
-                word.push({
-                    "nazo":document.getElementById("nazo").value,
-                    "tips":onTip
-                });
-                document.getElementById("result").innerHTML = JSON.stringify(word);
-                document.getElementById("nazo").value="";//清空打字机
+              yeees();
             }
         };
         var yeees = function(){
             if ( document.getElementById("nazo").value != "") {
-            word.push({
-                "nazo":document.getElementById("nazo").value,
-                "tips":onTip
-            });
+              
+              var resArray = document.getElementById("nazo").value.split("，");
+              for (var i in resArray){
+              
+            	word.push({
+                	"nazo":resArray[i],
+                	"tips":onTip
+            	});
+              }
+              
             document.getElementById("result").innerHTML = JSON.stringify(word);
             document.getElementById("nazo").value="";//清空打字机
             }
             mailer();
+          document.getElementById("nazo").focus();
         };
         var settip = function(){
             onTip=document.getElementById("TRY").value;
@@ -136,7 +166,7 @@
         };
         var mailer = function(){
             var dates = new Date().format("yyyy-MM-dd")
-            var url = "mailto:tim720719@yeah.net?subject=Nekonazo Words"+dates+"&body=" +JSON.stringify(word);
+            var url = "mailto:tim720719@yeah.net?subject=Nekonazo Words"+dates+"&body='" +JSON.stringify(word)+"'";
             document.getElementById("Maction").href=url;
         };
         mailer();

@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Check Words</title>
+    <title>Nekonazo CheckWords</title>
     <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         .text{
             width:100%;
         }
+      input{
+      font-size:28px
+      
+      }
     </style>
 </head>
 <body>
-    <input type="text" name="before" id="before"class="text"/>
-    <input type="button"onclick="check()"/>
+    <input type="text" name="before" id="before"class="text" placeholder="放入需要检查的整段代码"/>
+    <input type="button"onclick="check()" value ="输出无重复结果"/>
     <input type="text" name="after" id="after"class="text"/>
+  <div id="result"></div>
     <script type="text/javascript">
     let check = function(){
-        let words = JSON.parse(document.getElementById("before").value);
-        let after = [];
+        try{let words = JSON.parse(document.getElementById("before").value);
+        let afters = [];
         for (let a in words){
             let isR=false;
             for(let b in words){
@@ -25,9 +31,15 @@
                     break;
                 }
             }
-            if(!isR) after.push(words[a]);
+            if(!isR) afters.push(words[a]);
         }
-        document.getElementById("after").value = JSON.stringify(after);
+        document.getElementById("after").value = JSON.stringify(afters);
+           document.getElementById("result").innerHTML= "滤出"+(words.length - afters.length)+"个词，统计得共"+afters.length+"个词有效w";
+           
+           
+           }catch(e){
+        document.getElementById("after").value="代码有误quq、看看完整性"
+        }
     };
     </script>
 </body>

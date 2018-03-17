@@ -409,12 +409,9 @@ console.info(data);
 	$("Gmsgbox").scrollTop = $("Gmsgbox").scrollHeight;
 }).on("syncNazo",function(data){//异步揭示谜底
 	//////////////
-	if(isTurn){
-	$("nazo").innerHTML="<a href='https://www.baidu.com/?wd="+data.nazo+"' target='_balnk'>"+data.nazo+"</a>";
+	$("nazo").innerHTML=data.nazo;
 	$("tips").innerHTML=data.tips;
-	}else{
-		
-	}
+	
 }).on("TurnEnd",function(){
 	theCount(0,5);
 
