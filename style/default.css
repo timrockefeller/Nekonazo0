@@ -1,0 +1,296 @@
+body{
+    overflow: hidden;
+}
+
+
+#canvas{
+margin-top: -350px;
+    margin-left: -500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: solid #DDD 1px;
+    box-shadow: 0px 0px 10px #DDD;
+}
+.canvasctr{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+
+/*game mode*/
+.gamectr{
+    position:absolute;
+    top:0;
+    right:-18%;
+    height:100%;
+    width:20%;
+    overflow-y:hidden;
+    border: solid #DDD 1px;
+    box-shadow: 0px 0px 10px #DDD;
+    opacity: 0.5;
+    transition: 500ms ease;
+    overflow:hidden;
+    background:#FFF;
+    background:rgba(255,255,255,0.7);
+}
+.gamectr:hover{
+    right: 0;
+    opacity: 1;
+}
+
+
+.importants{
+    right:0;
+    opacity:1;
+}
+
+.flame{
+    height:100%;
+    transition: ease 200ms;
+    overflow:hidden;
+}
+.hidden {
+    height:0;
+}
+
+/*Rooms*/
+.Rbutton{
+    background: #4a98e6;
+    width: 60%;
+    color: #FFF;
+    font-size: 28px;
+    text-align: center;
+    margin: 25px auto;
+    padding: 10px 0;
+    transition:100ms ease;
+}
+.Rbutton:hover{
+    background: #689fd6;
+}
+.Rbutton:active{
+    background: #205992;
+}
+
+#Rooms{
+    /* position: absolute; */
+    width: 100%;
+    left: 0;
+    /* height: 70%; */
+    overflow-y: overlay;
+    overflow-x: hidden;
+    max-height: 70%;
+}
+.Rtag {
+    width:100%;
+    height:70px;
+    left:0;
+}
+.Rtag:hover{
+    background:#EEE;
+    background:rgba(0,0,0,0.06);
+}
+.Rtag:active{
+    background:#DDD;
+    background:rbga(0,0,0,0.1);
+}
+
+.Rtname{
+    padding:21px 0 21px 10px;
+    color:#444;
+    font-size:28px;
+}
+.RTNfull{
+    color:#999;
+}
+.RTNfull::after{
+    content: " (满员)";
+    font-size:20px;
+    color:#AAA;
+}
+
+/*waiting*/
+
+#Wnames{
+    top:5%;
+    height:70%;
+    width:100%;
+}
+.Wtag {
+    width:100%;
+    height:12.5%;
+    left:0;
+}
+.Wtag:hover{
+    background:#EEE;
+    background:rgba(0,0,0,0.06);
+}
+.namecard{
+    padding:21px 0 21px 15px;
+    color:#444;
+    font-size:28px;
+}
+.Wbutton{
+    background: #4a98e6;
+    width: 60%;
+    color: #FFF;
+    font-size: 28px;
+    text-align: center;
+    margin: 50px 20%;
+    padding: 10px 0;
+    transition:100ms ease;
+}
+.Wbutton:hover{
+    background: #689fd6;
+}
+.Wempty{
+    color:#999;
+}
+.Wrdy{
+    color:#5ec55a;
+}
+
+.Rname{
+    top: 0;
+    left: 0;
+    height: 4%;
+    width: 100%;
+    color: #000;
+    background: rgba(0,0,0,0.06);
+    font-size: 30px;
+    text-align: right;
+    padding: 0.5% 0;
+    overflow:hidden;
+}
+/*in game*/
+#Gnames{
+    top:5%;
+    height:30%;
+    width:100%;
+    box-shadow: 0px 0px 10px #DDD;
+}
+.Gnc{
+    padding:2px 0 2px 16px;
+    color:#444;
+    font-size:16px;
+}
+.Gtag {
+    width:100%;
+    height:12.5%;
+    left:0;
+}
+.Gtag:nth-child(2n)  {
+    background:#DDD;
+    background:rgba(0,0,0,0.01);
+}
+
+
+
+.Gturn::after {
+    content: "正在绘图";
+    color: #999999;
+    font-size: 12px;
+}
+
+#Gmsgbox{
+    height:60%;
+    width:90%;
+    padding: 2.5% 5%;
+    transition:200ms ease;
+    overflow: hidden;
+}
+#Ginput{
+    box-shadow: 0px 0px 10px #DDD;
+    height: 4%;
+}
+#Gmsg{
+    width: 90%;
+    padding: 0 5%;
+    border: none;
+    height: 100%;
+    font-size: 20px;
+    color: #444;
+}
+input:focus{
+    outline: none;
+    background:#EEE;
+}
+.Gmsgc {
+    font-size: 14px;
+    max-width: 100%;
+    /* line-height: 10px; */
+    padding: 10px 0 0 0;
+}
+
+
+
+.nazoctr{
+    width:400px;
+    position:absolute;
+    overflow:hidden;
+    top:0;
+    left:50%;
+    margin-left:-200px;
+    box-shadow: 0px 0px 10px #DDD;
+    padding:20px 40px;
+    transition:200ms ease;
+    background:#FFF;
+}
+.nt{
+    padding: 0 20px;
+    font-size: 20px;
+}
+.Nhidden{
+    top: -100px;
+}
+#timecount{
+    height:20px;
+    background:#DDD;
+    background:rgba(0,0,0,0.1);
+    position:absolute;
+    bottom:0;
+    left:0;
+    transition: 500ms ease;
+    color: #ec9a9a;
+    overflow: hidden;
+    text-align: right
+}
+
+
+
+
+
+/*Brishes*/
+
+#brush{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 98%;
+    width: 50px;
+    /* overflow: hidden; */
+    padding: 1% 10px;
+    box-shadow: 0px 0px 10px #DDD;
+}
+.clrPnl{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: #DDD solid 2px;
+    transition: 200ms ease;
+    outline: none;
+    margin: 5px 0;
+    color: #FFF;
+    font-size: 14px;
+    overflow: hidden;
+}
+.clrPnl:hover{
+    border: #DDD solid 5px;
+}
+.clrPnl:active{
+    border: #AAA solid 3px;
+}

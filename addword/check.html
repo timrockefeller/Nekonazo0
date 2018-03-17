@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Words</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        .text{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="before" id="before"class="text"/>
+    <input type="button"onclick="check()"/>
+    <input type="text" name="after" id="after"class="text"/>
+    <script type="text/javascript">
+    let check = function(){
+        let words = JSON.parse(document.getElementById("before").value);
+        let after = [];
+        for (let a in words){
+            let isR=false;
+            for(let b in words){
+                if(words[a].nazo==words[b].nazo && a!=b) {
+                    isR = false;
+                    break;
+                }
+            }
+            if(!isR) after.push(words[a]);
+        }
+        document.getElementById("after").value = JSON.stringify(after);
+    };
+    </script>
+</body>
+</html>

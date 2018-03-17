@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nekonazo 0</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="style/default.css" type="text/css" />
+    <script type="text/javascript" src="ft/socket.io.js"></script>
+</head>
+<body>
+    <div class="canvasctr">
+        <canvas id="canvas" height="700px" width="1000px"></canvas>
+    </div>
+    <div id="timecount"style="width:0"></div>
+    
+    
+    
+    <div id="brush">
+        <img src="asset/Nekonazo-Logo.png" />
+        <hr style="width:80%;opacity:0.7"/>
+        <button class="clrPnl" onclick="OnColor('#000000')" style="background:#000000">呂</button>
+        <button class="clrPnl" onclick="OnColor('#005CAF')" style="background:#005CAF">琉璃</button>
+        <button class="clrPnl" onclick="OnColor('#66327C')" style="background:#66327C">堇</button>
+        <button class="clrPnl" onclick="OnColor('#1B813E')" style="background:#1B813E">常盤</button>
+        <button class="clrPnl" onclick="OnColor('#F7C242')" style="background:#F7C242">花葉</button>
+        <button class="clrPnl" onclick="OnColor('#C73E3A')" style="background:#C73E3A">銀朱</button>
+        <button class="clrPnl" onclick="OnEraser()" style="background:url('asset/eraser.png') no-repeat center"></button>
+        <hr style="width:80%;opacity:0.7"/>
+        <button class="clrPnl" onclick="OnWidth(24)" style="background:url('asset/b-10.png') no-repeat center"></button>
+        <button class="clrPnl" onclick="OnWidth(14)" style="background:url('asset/b-5.png') no-repeat center"></button>
+        <button class="clrPnl" onclick="OnWidth(4)" style="background:url('asset/b-2.png') no-repeat center"></button>
+    </div>
+    <div id="gamemode" class="gamectr">
+        
+        <div id="roomselect" class="flame">
+            <div class="Rbutton" onClick="app.Rcreat()">创建房间</div>
+            <div class="Rbutton" onClick="app.Rfastjoin()" >快速加入</div>
+            <hr style="width:80%;opacity:0.7"/>
+            <div id="Rooms"></div>
+            <div class = "Rtag"><div class="Rtname" style="color:#DDD;font-size:16px;padding:27px 0 27px 50px">没有更多了...</div></div>
+        </div>
+        
+        <div id="waiting" class="flame hidden">
+            <div class="Rname"></div>
+            <div id="Wnames"></div>
+            <div class="Wbutton" style="bottom:0" onClick="app.Wrdy()" >准备</div>
+        </div>
+        
+        <div id="ingame" class="flame hidden">
+            <div class="Rname"></div>
+            <div id="Gnames"></div>
+            <div id="Gmsgbox"></div>
+            <div id="Ginput">
+                <input id="Gmsg" type="text" placeholder="/ 打字机 \"/>
+            </div>
+            
+        </div>
+    </div>
+    <div id="nazos" class="nazoctr Nhidden">
+        Nazo:<span id="nazo" class="nt"></span>Tips:<span id="tips" class="nt"></span><div id="giveup"></div>
+    </div>
+    
+<script type="text/javascript">
+
+</script>    
+    <script type="text/javascript" src="ft/app.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nekonazo addword</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style type="text/css">
+    
+        #nazo{
+            height:40px;
+            width:60%;
+            font-size:28px;
+            
+        }
+        .tiptype{
+            padding:10px 20px;
+            height:30px;
+            font-size:20px;
+        }
+        .tiptype:hover{
+            background:#DDD;
+        }
+        .tiptype:active{
+            background:#AAA;
+        }
+        #tips{
+            color:pink;
+            font-size:24px;
+        }
+        #result{
+            padding:10px 20px;
+            border:#777 solid 2px;
+        }
+        #ctr{
+            width:80%;
+        }
+        @media screen and (max-width: 600px) {
+            #ctr{
+                width:100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="ctr"style="margin:0 auto">
+        
+        <input id="nazo" type="text" placeholder="输入谜题,回车来输入">
+        <input id="yes" type="button" onClick="yeees()" value="手动发射">
+        <div id="tipses">
+            选择一个提示种类,已选择:<span id="tips">人物</span>
+            <div class="tiptype" onclick="changeT('人物')">人物</div>
+            <div class="tiptype" onclick="changeT('身体部位')">身体部位</div>
+            <div class="tiptype" onclick="changeT('游戏')">游戏</div>
+            <div class="tiptype" onclick="changeT('动作')">动作</div>
+            <div class="tiptype" onclick="changeT('诗')">诗</div>
+            <div class="tiptype" onclick="changeT('梗')">梗</div>
+            <div class="tiptype" onclick="changeT('萌化')">萌化</div>
+            <input id="TRY" type="text" placeholder="自定义提示">
+            <input id="ohyes" type="button" onclick="settip()" value="确认">
+        </div>
+        完成后把下面这一坨东西复制给我hhh   （刷新以清空
+        <div id="result">
+            
+        </div>
+        或者一戳邮件
+        
+        <a id="Maction"href="">shoooot</a>
+    </div>
+    
+    
+    
+    
+    
+    <script type="text/javascript">
+    
+    
+    Date.prototype.format = function(fmt) { 
+     var o = { 
+        "M+" : this.getMonth()+1,                 //月份 
+        "d+" : this.getDate(),                    //日 
+        "h+" : this.getHours(),                   //小时 
+        "m+" : this.getMinutes(),                 //分 
+        "s+" : this.getSeconds(),                 //秒 
+        "q+" : Math.floor((this.getMonth()+3)/3), //季度 
+        "S"  : this.getMilliseconds()             //毫秒 
+    }; 
+    if(/(y+)/.test(fmt)) {
+            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length)); 
+    }
+     for(var k in o) {
+        if(new RegExp("("+ k +")").test(fmt)){
+             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+         }
+     }
+    return fmt; 
+}        
+
+
+
+
+
+
+
+        var word=[];
+        var onTip="人物";
+        var changeT = function(tips){
+            onTip=tips;
+            document.getElementById("tips").innerHTML=tips;
+        };
+        document.getElementById("nazo").onkeydown = function(e){//打字机
+            e = e || window.event;
+            if ( document.getElementById("nazo").value != "" && e.keyCode == 13 ) {
+            ////////
+                word.push({
+                    "nazo":document.getElementById("nazo").value,
+                    "tips":onTip
+                });
+                document.getElementById("result").innerHTML = JSON.stringify(word);
+                document.getElementById("nazo").value="";//清空打字机
+            }
+        };
+        var yeees = function(){
+            if ( document.getElementById("nazo").value != "") {
+            word.push({
+                "nazo":document.getElementById("nazo").value,
+                "tips":onTip
+            });
+            document.getElementById("result").innerHTML = JSON.stringify(word);
+            document.getElementById("nazo").value="";//清空打字机
+            }
+            mailer();
+        };
+        var settip = function(){
+            onTip=document.getElementById("TRY").value;
+            document.getElementById("tips").innerHTML=onTip;
+        };
+        var mailer = function(){
+            var dates = new Date().format("yyyy-MM-dd")
+            var url = "mailto:tim720719@yeah.net?subject=Nekonazo Words"+dates+"&body=" +JSON.stringify(word);
+            document.getElementById("Maction").href=url;
+        };
+        mailer();
+        var clear = function(){
+            word=[];
+            document.getElementById("result").innerHTML="";
+        };
+    </script>
+    
+</body>
+
+</html>
