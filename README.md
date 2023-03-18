@@ -11,18 +11,18 @@ Nekonazo亡了，假装自己再写一个Nekonazo0。
 
 #### 服务器
 
-    在 `server/server.js` 中自定义端口。
+在 `server/server.js` 中自定义端口。
 
-    ```bash
-        cd server
-        npm update
-        npc start
-    ```    
+```bash
+cd server
+npm update
+npc start
+```    
 
 #### 客户端
 
-    使用 http 部署部署剩余内容，主页为 `index.html`。
-    修改 `ft/app.js` 中的IP与端口即可。
+使用 http 部署部署剩余内容，主页为 `index.html`。
+修改 `ft/app.js` 中的IP与端口即可。
 
 ## 词库
 
