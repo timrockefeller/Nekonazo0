@@ -1,3 +1,4 @@
+![](./asset/Nekonazo-Logo.png)
 # Nekonazo0
 
 Nekonazo亡了，假装自己再写一个Nekonazo0。
@@ -8,17 +9,29 @@ Nekonazo亡了，假装自己再写一个Nekonazo0。
 
 ## 部署
 
- - 服务器
-```
-    $ git clone https://github.com/timrockefeller/Nekonazo0.git
-    $ node server/server.js
-```
- - 客户端
+#### 服务器
 
-使用apache或nignx等http部署剩余内容，主页为index.html
-    
-## 使用的第三方模块
+    在 `server/server.js` 中自定义端口。
 
- - socket.io
+    ```bash
+        cd server
+        npm update
+        npc start
+    ```    
 
- - express
+#### 客户端
+
+    使用 http 部署部署剩余内容，主页为 `index.html`。
+    修改 `ft/app.js` 中的IP与端口即可。
+
+## 词库
+
+位于 `server/words/words_1.json`，可以借助 `addword/index.html` 来扩展或构筑词库。
+
+## 预览
+
+![](./preview/01.png)
+
+![](./preview/02.png)
+
+All rights reserved to Kitekii@2022.

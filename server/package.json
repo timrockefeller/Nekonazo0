@@ -1,0 +1,15 @@
+{
+  "name": "nknz-svr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "kitekii",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "4.6.1"
+  }
+}
